@@ -1,0 +1,221 @@
+body {
+  margin: 0;
+  box-sizing: border-box;
+  width:100vw;
+  height: 100vh;
+}
+#uiContainer{
+    position: absolute;
+    right: 0;
+    top: 0;
+
+}
+#canvas{
+  width:75%;
+  height: 100%;
+  float: right;
+  top: 0;
+position: absolute;
+
+}
+#InterfaceMenu{
+
+  width: 25%; 
+  background: black;
+  color:#fff;
+  height: 5%;
+}
+
+#Interface{
+  float: left;
+  width: 25%;  
+  height: 95%;
+  position: relative;
+display: block;
+overflow-y: scroll;
+
+}
+#InterfaceMenu .menu-open{
+  width:100%;
+  margin: auto;
+  color: #fff;
+
+  background-color: #0275d8;
+ border-color: #0275d8;
+  height: 100%;
+  font-weight: bold;
+  font-size:18px;
+
+}
+#InterfaceMenu .menu-open:hover{
+    background-color: #025aa5;
+  border-color: #01549b;
+}
+#Interface .element{
+    width: 100%;
+}
+#Interface .element .head{
+    text-align: center;
+    font-weight: bold;
+    border-top: 2px solid;
+    border-bottom: 2px solid;
+    color: #fff;
+    background-color: #5bc0de;
+    padding: 5px;
+    
+}
+#Interface .element .head.open{
+  background-color:#25e3ea;
+}
+#Interface .element .head::after{
+	content: "+";
+	text-align: left;
+	float: right;
+	font-weight: 900;
+	color: #ffe100;
+}
+#Interface .element .head.open::after{
+  content:"-";
+} 
+#Interface .element > .head+.properties{
+    background-color: #0275d8;
+    border-color: #0275d8;
+    display: none;
+}
+#Interface .element > .head.open+.properties{
+  display:block;
+}
+#Interface .element .properties .property{
+  padding: 5px;
+  border-bottom: 2px solid !important;
+  color: #fff;
+}
+#Interface .element .properties .property:last-child{
+  border-bottom:none;
+}
+#Interface .element .properties .property .name{
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  border-bottom:0.5px solid #fff;
+}
+#Interface .element .properties .property .pvalue{
+  padding: 5px 0;
+text-align: center;
+
+}
+#Interface .element .properties .property .pvalue label{
+  width: 20%;
+  display: inline-block;
+  
+}
+#Interface .element .properties .property label input{
+  width: 35px;
+}
+.shead{
+  width: 100% !important;
+text-align: center !important;
+font-weight: bold !important;
+border-top: 2px solid !important;
+border-bottom: 2px solid !important;
+color: #fff;
+background-color: #5bc0de;
+padding: 10px;
+}
+.sblock{
+  padding: 20px 5px;
+  width: 100%;
+  color: #fff;
+  background-color: #0275d8;
+  border-color: #0275d8;
+}
+.sblock >div.row{
+  border-bottom:3px solid  #5bc0de;
+  margin:0 !important;
+  padding:5px;
+}
+.sblock >div.row > div:first-child{
+  padding: 3px;
+font-weight: bold;
+
+}
+.w-20, .w-10{
+  float:left;
+}
+.w-100.btn-primary:hover{
+	color: #fff;
+	background-color: #0275d8;
+	border-color: #0275d8;
+
+}
+#optionWindow{
+  position: fixed;
+width: 80vw;
+height: 80vh;
+background-color: rgba(0, 0, 0,0.8);
+top: 10vh;
+left: 10vw;
+display: block;
+box-sizing: border-box;
+}
+#optionWindow .option-top-bar{
+  color: white;
+  text-align: center;
+  font-size:18px;
+  border-bottom: 1px solid #ddd;
+}
+#optionWindow .option-top-bar h5{
+  margin: 0;
+  padding: 10px;  
+}
+#optionWindow .option-top-bar .close-btn {
+	float: right;
+	position: absolute;
+	right: 10px;
+	top: 7px;
+}
+#OptionsContainer .options-menu-item button{
+  color:#fff;
+  background-color:#39ac73;
+  padding: 5px 10px;
+  width: 100%;
+  font-size: 14px;
+  text-align: center;
+
+}
+#optionWindow .options-window-content{
+  width:100%;
+  position: absolute;
+  top: 36px;
+  bottom: 0;
+}
+#optionWindow .options-window-content .window-options-container{
+  height: 100%;
+  position: relative;
+}
+#optionWindow .options-window-content .window-options-container .option-input-text-group{
+  color:#fff;
+  padding: 15px;
+  display: block;
+  width: 45%;
+  margin: auto;
+}
+#optionWindow .options-window-content .window-options-container .option-input-text-group label{
+  display: inline-block;
+  width: 45%;
+
+  text-align: center;
+}
+#optionWindow .options-window-content .window-options-container .option-input-text-group input{
+    display: inline-block;
+  width: 45%;
+  text-align: center;
+
+}
+#optionWindow .options-window-content .window-options-container .option-input-text-group span{
+  display: block;
+  width:100%;
+  text-align: center;
+  font-size: 12px;
+  color:rgb(168, 165, 165);
+}

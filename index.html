@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="./Css/main.css">
+         <meta charset="UTF-8"> 
+        <!--<link rel="stylesheet" href="./Css/bootstrap.min.css">-->
+        <script src="./Js/Class/Shader.js"></script>
+        <script src="./Js/Class/Matrix.js"></script>
+        <script src="./Js/Class/UserInterface.js"></script>
+        <script src="./Js/Class/UserInterface/ElementInterfaceProperty.js"></script>
+        <script src="./Js/Class/UserInterface/ElementInterfaceProperties.js"></script>
+        <script src="./Js/Class/UserInterface/Options/ControlOptions.js"></script>
+        <script src="./Js/Class/UserInterface/ElementInterface.js"></script>
+        <script src="./Js/Class/Elements/Element.class.js"></script>
+        <script src="./Js/Class/Elements/Circle.class.js"></script>
+        <script src="./Js/Class/Elements/Line.class.js"></script>
+        <script src="./Js/Class/Elements/Scene.class.js"></script>
+        <script src="./Js/Class/Elements/Square.class.js"></script>
+        <script src="./Js/Class/Elements/Strip.class.js"></script>
+        <script src="./Js/Class/Elements/Polygon.class.js"></script>
+        <script src="./Js/Class/Elements/Cube.class.js"></script>
+        <script src="./Js/Class/Elements/PointsGroup.class.js"></script>
+        <script src="./Js/Class/Camera.js"></script>
+
+        <script src="./Js/Web3D.js"></script>
+        <style>
+            body {
+                margin: 0;
+                min-width: 90vw;
+                overflow: hidden !important;
+            }
+
+        </style>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+
+    <body>
+        <div id="InterfaceMenu">
+            <button id="InterfaceMenuBtn" class="menu-open">MENU</button>
+            <div class="menu-container"> </div>
+        </div>
+        <div id="Interface">
+        </div>
+
+
+        </div>
+
+        <canvas id="canvas"></canvas>
+
+
+
+        <script>
+            
+            var app = Web3D("canvas", "Interface");
+            var cir1 = new Circle("kolko1", app);
+            var cir2 = new Circle("kolko2", app);
+//             var C1= new Polygon("C1",app, [
+//   // Front face
+//   [-2.0, -2.0,  2.0,1],
+//   [ 2.0, -2.0,  2.0,1],
+//   [ 2.0,  2.0,  2.0,1],
+//   [-2.0,  2.0,  2.0,1],
+//   [-2.0, -2.0, -2.0,1],
+//   [-2.0,  2.0, -2.0,1],
+//   [ 2.0,  2.0, -2.0,1],
+//   [ 2.0, -2.0, -2.0,1],
+//   [-2.0,  2.0, -2.0,1],
+//   [-2.0,  2.0,  2.0,1],
+//   [ 2.0,  2.0,  2.0,1],
+//   [ 2.0,  2.0, -2.0,1],
+//   [-2.0, -2.0, -2.0,1],
+//   [ 2.0, -2.0, -2.0,1],
+//   [ 2.0, -2.0,  2.0,1],
+//   [-2.0, -2.0,  2.0,1],
+//   [ 2.0, -2.0, -2.0,1],
+//   [ 2.0,  2.0, -2.0,1],
+//   [ 2.0,  2.0,  2.0,1],
+//   [ 2.0, -2.0,  2.0,1],
+//   [-2.0, -2.0, -2.0,1],
+//   [-2.0, -2.0,  2.0,1],
+//   [-2.0,  2.0,  2.0,1],
+//   [-2.0,  2.0, -2.0,1]
+// ],[
+//   0,  1,  2,      0,  2,  3,    // front
+//   4,  5,  6,      4,  6,  7,    // back
+//   8,  9,  10,     8,  10, 11,   // top
+//   12, 13, 14,     12, 14, 15,   // bottom
+//   16, 17, 18,     16, 18, 19,   // right
+//   20, 21, 22,     20, 22, 23    // left
+// ],[
+//   [1.0,  1.0,  1.0,  1.0],    // Front face: white
+//   [1.0,  0.0,  0.0,  1.0],    // Back face: red
+//   [0.0,  1.0,  0.0,  1.0],    // Top face: green
+//   [0.0,  0.0,  1.0,  1.0],    // Bottom face: blue
+//   [1.0,  1.0,  0.0,  1.0],    // Right face: yellow
+//   [1.0,  0.0,  1.0,  1.0]     // Left face: purple
+// ]);
+// C1.properties.Color.set({ r: 0, g: 1, b: 1, a: 1 });
+// C1.properties.Position.X(-5);
+            // cir2.spin.start("x");
+            // var lineX = new Line("X",app, [-1, 0, 0, 1], [1, 0, 0, 1]);
+            // var lineY = new Line("y",app, [0, -1, 0, 1], [0, 1, 0, 1]);
+            // var lineZ = new Line("z",app, [0, 0, -1, 1], [0, 0, 1, 1]);
+            app.FpsMeter();
+            app.shader.gl.depthRange(-1, 1);
+            cir1.properties.Color.set({ r: 0, g: 1, b: 1, a: 1 });
+            cir1.properties.Position.X(-1);
+            cir1.properties.Position.Y(-1);
+            cir2.properties.Position.X(-1);
+            cir2.properties.Position.Y(1);
+            app.getPoints();
+            app.Update();
+            var interval;
+            var xx=0.04;
+            function debugRotate() {
+                 interval = setInterval(function () {
+                    app.MX.Rotation.Z(xx).X(xx);
+                    app.MX.modelMatrix = app.MX.rotateTransform(app.MX.modelMatrix, { x: xx, y: 0, z: 0, d: 0 });
+                }, 15, true);
+            }
+            function debugRotateStop(){
+                window.clearInterval(interval);
+            }
+            // var interval = setInterval(function(){
+            //         app.Elements.Group_1.properties.Rotation.values.x+=0.01;
+            //         app.Elements.Group_1.RotateTransform();
+            //         app.Elements.Group_1.Render();
+            //     }, 15);
+            //     app.camera.pos.d=2;
+        </script>
+
+        <!--            
+            <div class="d-inline-block shead"> Kamera:</div>
+            <div class="sblock d-inline-block">
+                <div class="row">
+                    <div class="d-inline-block"> Pozycja:</div>
+                    <div class=" d-inline-block"> X: <input type="text" id="cam_pos_x"></div>
+                    <div class="d-inline-block"> Y: <input type="text" id="cam_pos_y"></div>
+                    <div class="d-inline-block"> Z: <input type="text" id="cam_pos_z"></div>
+                </div>
+            </div>
+            <div class="sblock d-inline-block">
+                <div class="row">
+                    <div class="d-inline-block"> Rotacja:</div>
+                    <div class=" d-inline-block"> X: <input type="text" id="cam_rot_x"></div>
+                    <div class="d-inline-block"> Y: <input type="text" id="cam_rot_y"></div>
+                    <div class="d-inline-block"> Z: <input type="text" id="cam_rot_z"></div>
+                </div>
+            </div>
+
+            <div class="d-inline-block shead"> Kolo:</div>
+            <div class="sblock d-inline-block">
+                <div class="row">
+                    <div class="d-inline-block"> Rotacja:</div>
+                    <div class="d-inline-block"> X: <input type="text" id="rot_x"></div>
+                    <div class="d-inline-block"> Y: <input type="text" id="rot_y"></div>
+                    <div class="d-inline-block"> Z: <input type="text" id="rot_z"></div>
+                </div>
+            </div>
+
+            <div class="sblock d-inline-block">
+                <div class="row">
+                    <div class="d-inline-block"> Pozycja:</div>
+                    <div class=" d-inline-block"> X: <input type="text" id="pos_x"></div>
+                    <div class="d-inline-block"> Y: <input type="text" id="pos_y"></div>
+                    <div class="d-inline-block"> Z: <input type="text" id="pos_z"></div>
+                </div>
+            </div>-->
+
+
+
+    </body>
+
+</html>
