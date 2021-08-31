@@ -72,7 +72,7 @@ class UserInterface {
     }
 
     getGl() {
-        return this.canvas.getContext('experimental-webgl');
+        return this.canvas.getContext('webgl2');
     }
     mousedown(event) {
         this.mousepos.x = event.clientX;

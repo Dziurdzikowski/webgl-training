@@ -19,7 +19,7 @@ var Web3D = function (id_canvas, id_interface) {
         this.aspect = this.interface.canvas.width / this.interface.canvas.height;
         this.shader.shaderInit();
         this.shader.glInit();
-        this.SceneInit();
+        this.SceneInit(6, 80);
         return this;
     };
     obj.FpsMeterActive=false;
@@ -74,8 +74,8 @@ var Web3D = function (id_canvas, id_interface) {
         for (var i = 0; i <= gestosc; i++) {
             stripX[i] = new Strip("stripX_" + i, this, [x, y, z, 1], [(-1 * x), y, z, 1]);
             stripX[(i + gestosc)] = new Strip("stripX_" + (i + gestosc), this, [tmp2, y, x, 1], [tmp2, y, (-1 * x), 1]);
-            stripX[i].hide().properties.Color.set({ r: 1, g: 0, b: 0, a: 1 });
-            stripX[(i + gestosc)].hide().properties.Color.set({ r: 1, g: 0, b: 0, a: 1 });
+            stripX[i].hide().properties.Color.set({ r: 1, g: 0, b: 0, a: 0.3 });
+            stripX[(i + gestosc)].hide().properties.Color.set({ r: 1, g: 0, b: 0, a: 0.3 });
             z -= gestosc_wartosc;
             tmp2 += gestosc_wartosc;
         }
@@ -87,8 +87,8 @@ var Web3D = function (id_canvas, id_interface) {
         for (var i = 0; i <= gestosc; i++) {
             stripY[i] = new Line("stripY_" + i + "", this, [x, y, z, 1], [(-1 * x), y, z, 1]);
             stripY[(i + gestosc)] = new Line("stripY_" + (i + gestosc) + "", this, [tmp2, x, z, 1], [tmp2, (-1 * x), z, 1]);
-            stripY[(i + gestosc)].hide().properties.Color.set({ r: 0, g: 1, b: 0, a: 1 });
-            stripY[i].hide().properties.Color.set({ r: 0, g: 1, b: 0, a: 1 });
+            stripY[(i + gestosc)].hide().properties.Color.set({ r: 0.15, g: 0.20, b: 0.8, a: 0.3 });
+            stripY[i].hide().properties.Color.set({ r: 0.15, g: 0.20, b: 0.8, a: 0.3 });
             y -= gestosc_wartosc;
             tmp2 += gestosc_wartosc;
         }
@@ -101,14 +101,12 @@ var Web3D = function (id_canvas, id_interface) {
             stripZ[i] = new Strip("stripZ_" + i + "", this, [x, y, z, 1], [x, (-1 * y), z, 1]);
             stripZ[(i + gestosc)] = new Strip("stripZ_" + (i + gestosc) + "", this, [x, tmp2, y, 1], [x, tmp2, (-1 * y), 1]);
             stripZ[(i + gestosc)].hide();
-            stripZ[(i + gestosc)].properties.Color.set({ r: 0, g: 0, b: 1, a: 1 });
+            stripZ[(i + gestosc)].properties.Color.set({ r: 0.7, g: 0, b: 1, a: 0.3 });
             stripZ[i].hide();
-            stripZ[i].properties.Color.set({ r: 0, g: 0, b: 1, a: 1 });
+            stripZ[i].properties.Color.set({ r: 0, g: 0, b: 1, a: 0.4 });
             z -= gestosc_wartosc;
             tmp2 += gestosc_wartosc;
         }
-
-
 
     }
 
@@ -139,7 +137,7 @@ var Web3D = function (id_canvas, id_interface) {
         this.Xaxis = new Line("Xaxis", this, [-2, 0, 0, 0], [2, 0, 0, 0]);
         this.Xaxis.properties.Color.set({ r: 1, g: 0, b: 0, a: 1 });
         this.Yaxis = new Line("Yaxis", this, [0, -2, 0, 0], [0, 2, 0, 0]);
-        this.Yaxis.properties.Color.set({ r: 0, g: 1, b: 0, a: 1 });
+        this.Yaxis.properties.Color.set({ r: 0.5, g: 0, b: 0, a: 1 });
         this.Zaxis = new Line("Zaxis", this, [0, 0, -2, 0], [0, 0, 2, 0]);
         this.Zaxis.properties.Color.set({ r: 0, g: 0, b: 1, a: 1 });
     };
